@@ -1,4 +1,4 @@
-import { Description } from "~/components/description-card";
+import { Description } from "./description-card";
 
 const Instructions = () => {
   return (

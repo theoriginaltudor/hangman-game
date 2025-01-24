@@ -1,7 +1,7 @@
 import { useLoaderData, type LoaderFunctionArgs } from "react-router";
 import data from "app/DB/data.json";
-import { PlayableLetter } from "~/components/playable-letter";
-import { KeyboardLetter } from "~/components/keyboard-letter";
+import { PlayableLetter } from "~/routes/game/components/playable-letter";
+import { KeyboardLetter } from "~/routes/game/components/keyboard-letter";
 import { useState } from "react";
 
 type CategoryKeys = keyof typeof data.categories;

@@ -1,6 +1,6 @@
 import data from "app/DB/data.json";
 import { useLoaderData } from "react-router";
-import { Category } from "~/components/selectable-category";
+import { Category } from "./selectable-category";
 
 export async function loader() {
   const categories = Object.keys(data.categories);

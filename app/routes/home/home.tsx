@@ -1,8 +1,8 @@
 import { Card } from "~/components/transparent-card";
-import type { Route } from "./+types/home";
 import Logo from "../assets/images/logo.svg?react";
-import { PlayButton } from "~/components/play-button";
+import { PlayButton } from "~/routes/home/play-button";
 import { BlueButton } from "~/components/blue-button";
+import type { Route } from "../../+types/root";
 
 export function meta({}: Route.MetaArgs) {
   return [
