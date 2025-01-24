@@ -47,7 +47,10 @@ const Game = () => {
           <KeyboardLetter
             key={letter}
             letter={letter}
-            action={() => setSelected([...selected, letter])}
+            action={() => {
+              if (selected.includes(letter)) return;
+              setSelected([...selected, letter]);
+            }}
             disabled={selected.includes(letter)}
           />
         ))}
