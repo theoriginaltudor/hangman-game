@@ -1,13 +1,19 @@
-export const GameNavBar = () => {
+import { MenuButton } from "./menu-button";
+import HeartIcon from "../assets/images/icon-heart.svg?react";
+import { HealthBar } from "./health-bar";
+
+export const GameNavBar = ({ category }: { category: string }) => {
   return (
     <div className="flex justify-between items-center">
-      <div className="flex items-center">
-        <div className="text-2xl font-bold">Hangman</div>
-        <div className="ml-4 text-sm text-gray-500">Category</div>
+      <div className="flex items-center gap-4">
+        <MenuButton />
+        <h2 className="font-mouse text-[2.5rem] text-white tracking-wider">
+          {category}
+        </h2>
       </div>
-      <div className="flex items-center">
-        <div className="text-sm text-gray-500">Score: 0</div>
-        <div className="ml-4 text-sm text-gray-500">Lives: 6</div>
+      <div className="flex items-center gap-4">
+        <HealthBar health={100} />
+        <HeartIcon className="w-[1.625rem] h-[1.5rem]" />
       </div>
     </div>
   );
