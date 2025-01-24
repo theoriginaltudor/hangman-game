@@ -7,12 +7,12 @@ import {
 import { Routes } from "./lib/utils";
 
 export default [
-  index("routes/home.tsx"),
-  layout("layouts/nav-layout.tsx", [
-    route(Routes.category, "routes/category.tsx"),
-    route(Routes.instructions, "routes/instructions.tsx"),
+  index("routes/home/home.tsx"),
+  layout("layouts/nav-layout/nav-layout.tsx", [
+    route(Routes.category, "routes/category/category.tsx"),
+    route(Routes.instructions, "routes/instructions/instructions.tsx"),
   ]),
-  layout("layouts/game-layout.tsx", [
-    route(`${Routes.ingame}/:category`, "routes/game.tsx"),
+  layout("routes/game/layout/game-layout.tsx", [
+    route(`${Routes.ingame}/:category`, "routes/game/game.tsx"),
   ]),
 ] satisfies RouteConfig;

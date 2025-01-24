@@ -1,6 +1,6 @@
-import { MenuButton } from "./menu-button";
-import HeartIcon from "../assets/images/icon-heart.svg?react";
+import HeartIcon from "~/assets/images/icon-heart.svg?react";
 import { HealthBar } from "./health-bar";
+import { MenuButton } from "./menu-button";
 
 export const GameNavBar = ({ category }: { category: string }) => {
   return (

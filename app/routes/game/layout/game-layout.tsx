@@ -1,5 +1,5 @@
 import { Outlet, useLoaderData, type LoaderFunctionArgs } from "react-router";
-import { GameNavBar } from "~/components/game-nav-bar";
+import { GameNavBar } from "./nav/game-nav-bar";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   return { category: params.category };

@@ -1,5 +1,5 @@
+import { ShadowLetter } from "~/components/shadow-letter";
 import { BackButton } from "./back-button";
-import { ShadowLetter } from "./shadow-letter";
 
 export const NavBar = ({ pageHeading }: { pageHeading: string }) => {
   return (

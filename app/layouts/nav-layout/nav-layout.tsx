@@ -1,6 +1,6 @@
 import { Outlet, useLoaderData, type LoaderFunctionArgs } from "react-router";
-import { NavBar } from "~/components/nav-bar";
 import { Routes, type RouteValues } from "~/lib/utils";
+import { NavBar } from "./nav-bar";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
