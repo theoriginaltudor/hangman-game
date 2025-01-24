@@ -1,14 +1,12 @@
-import type React from "react";
+import { Link } from "react-router";
 
-type PurpleButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
-
-export const PurpleButton: React.FC<PurpleButtonProps> = ({
-  children,
-  ...rest
-}) => {
+export const PurpleButton: React.FC<{
+  children: React.ReactNode;
+  to: string;
+}> = ({ children, to: link }) => {
   return (
-    <button
-      {...rest}
+    <Link
+      to={link}
       className="flex justify-center bg-darkNavy relative py-5 px-16 rounded-full hover:brightness-105"
     >
       <div className="flex justify-center absolute rounded-full bg-purple-600 top-[0.0625rem] bottom-[0.3125rem] left-[0.1875rem] right-[0.1875rem]">
@@ -17,6 +15,6 @@ export const PurpleButton: React.FC<PurpleButtonProps> = ({
       <h2 className="uppercase font-mouse text-ms leading-none text-white relative">
         {children}
       </h2>
-    </button>
+    </Link>
   );
 };

@@ -29,8 +29,8 @@ const Game = () => {
         {word.split("").map((letter, index) => {
           if (letter === " ")
             return (
-              <div className="opacity-0">
-                <PlayableLetter key={index} letter={letter} />
+              <div className="opacity-0" key={index}>
+                <PlayableLetter letter={letter} />
               </div>
             );
           return (
