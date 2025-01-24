@@ -12,5 +12,5 @@ export default [
     route(Routes.category, "routes/category.tsx"),
     route(Routes.instructions, "routes/instructions.tsx"),
   ]),
-  route(Routes.ingame, "routes/game.tsx"),
+  route(`${Routes.ingame}/:category`, "routes/game.tsx"),
 ] satisfies RouteConfig;

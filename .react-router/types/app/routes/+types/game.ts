@@ -11,8 +11,8 @@ export type Info = {
   parents: [Parent0],
   id: "routes/game"
   file: "routes/game.tsx"
-  path: "/ingame"
-  params: {} & { [key: string]: string | undefined }
+  path: "/ingame/:category"
+  params: {"category": string} & { [key: string]: string | undefined }
   module: Module
   loaderData: T.CreateLoaderData<Module>
   actionData: T.CreateActionData<Module>
