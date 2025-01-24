@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import PlayButtonIcon from "../assets/images/icon-play.svg?react";
+import PlayButtonIcon from "~/assets/images/icon-play.svg?react";
 
 export const PlayButton = ({ to: link }: { to: string }) => {
   return (

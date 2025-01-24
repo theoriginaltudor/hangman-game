@@ -1,5 +1,5 @@
 import { Card } from "~/components/transparent-card";
-import Logo from "../assets/images/logo.svg?react";
+import Logo from "~/assets/images/logo.svg?react";
 import { PlayButton } from "~/routes/home/play-button";
 import { BlueButton } from "~/components/blue-button";
 import type { Route } from "../../+types/root";

@@ -3,6 +3,7 @@ import data from "app/DB/data.json";
 import { PlayableLetter } from "~/routes/game/components/playable-letter";
 import { KeyboardLetter } from "~/routes/game/components/keyboard-letter";
 import { useState } from "react";
+import { useHealthStore } from "./health-store";
 
 type CategoryKeys = keyof typeof data.categories;
 
@@ -15,11 +16,13 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 const Game = () => {
   const { guess } = useLoaderData<typeof loader>();
+  const { updateHealth, wrong } = useHealthStore();
   const word = guess.name.toLowerCase();
   const [selected, setSelected] = useState<string[]>([]);
   const wrongGuesses = selected.filter(
     (letter) => !word.includes(letter)
   ).length;
+  if (wrong !== wrongGuesses) updateHealth(word.length, wrongGuesses);
   return (
     <div className="flex flex-col gap-28">
       <div className="flex flex-wrap gap-x-3 gap-y-2 md:gap-x-4 md:gap-y-3 xl:gap-y-3 justify-center">
