@@ -13,7 +13,7 @@ export const GameNavBar = ({ category }: { category: string }) => {
       </div>
       <div className="flex items-center gap-4">
         <HealthBar health={100} />
-        <HeartIcon className="w-[1.625rem] h-[1.5rem]" />
+        <HeartIcon className="w-[1.625rem] h-[1.5rem] md:w-[3.3125rem] md:h-[3.0625rem] " />
       </div>
     </div>
   );
