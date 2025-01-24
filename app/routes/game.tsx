@@ -15,28 +15,29 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 const Game = () => {
   const { guess } = useLoaderData<typeof loader>();
+  const word = guess.name.toLowerCase();
   const [selected, setSelected] = useState<string[]>([]);
+  const wrongGuesses = selected.filter(
+    (letter) => !word.includes(letter)
+  ).length;
   return (
     <div className="flex flex-col gap-28">
       <div className="flex flex-wrap gap-x-3 gap-y-2 md:gap-x-4 md:gap-y-3 xl:gap-y-3 justify-center">
-        {guess.name
-          .toLowerCase()
-          .split("")
-          .map((letter, index) => {
-            if (letter === " ")
-              return (
-                <div className="opacity-0">
-                  <PlayableLetter key={index} letter={letter} />
-                </div>
-              );
+        {word.split("").map((letter, index) => {
+          if (letter === " ")
             return (
-              <PlayableLetter
-                key={index}
-                letter={letter}
-                disabled={!selected.includes(letter)}
-              />
+              <div className="opacity-0">
+                <PlayableLetter key={index} letter={letter} />
+              </div>
             );
-          })}
+          return (
+            <PlayableLetter
+              key={index}
+              letter={letter}
+              disabled={!selected.includes(letter)}
+            />
+          );
+        })}
       </div>
       <div className="flex flex-wrap gap-x-2 gap-y-6">
         {"abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
