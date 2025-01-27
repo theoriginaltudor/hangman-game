@@ -24,6 +24,7 @@ export const BlueButton: React.FC<{
   return (
     <Link
       to={link}
+      {...(action && { onMouseDown: action })}
       prefetch="intent"
       className="flex justify-center bg-darkNavy relative py-5 px-16 rounded-full hover:brightness-125"
     >

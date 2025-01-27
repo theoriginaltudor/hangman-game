@@ -3,10 +3,13 @@ import { Link } from "react-router";
 export const PurpleButton: React.FC<{
   children: React.ReactNode;
   to: string;
-}> = ({ children, to: link }) => {
+  action?: () => void;
+}> = ({ children, to: link, action }) => {
   return (
     <Link
       to={link}
+      {...(action && { onMouseDown: action })}
+      prefetch="intent"
       className="flex justify-center bg-darkNavy relative py-5 px-16 rounded-full hover:brightness-105"
     >
       <div className="flex justify-center absolute rounded-full bg-purple-600 top-[0.0625rem] bottom-[0.3125rem] left-[0.1875rem] right-[0.1875rem]">
