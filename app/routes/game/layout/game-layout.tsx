@@ -15,7 +15,7 @@ const GameLayout = () => {
     <div className="h-screen flex flex-col gap-20 px-6 py-8 md:px-10 md:py-16 xl:px-28 xl:py-20">
       {category && <GameNavBar category={category} health={health} />}
       <Outlet />
-      {health !== 0 && <MenuDialog />}
+      {health === 0 && <MenuDialog />}
     </div>
   );
 };
