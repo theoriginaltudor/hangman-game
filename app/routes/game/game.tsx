@@ -24,11 +24,11 @@ const Game = () => {
   const wrongGuesses = selected.filter(
     (letter) => !word.includes(letter)
   ).length;
-  if (wrong !== wrongGuesses) updateHealth(word.length, wrongGuesses);
+  if (wrong !== wrongGuesses) updateHealth(wrongGuesses);
   if (
     word
       .split("")
-      .filter(Boolean)
+      .filter((letter) => letter !== " ")
       .every((letter) => selected.includes(letter))
   )
     updateState("won");

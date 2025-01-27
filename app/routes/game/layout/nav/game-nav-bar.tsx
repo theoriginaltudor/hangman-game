@@ -5,8 +5,8 @@ import { useHealthStore } from "../../stores/health-store";
 import { useGameStateStore } from "../../stores/game-state-store";
 
 export const GameNavBar = ({ category }: { category: string }) => {
-  const { length, wrong } = useHealthStore();
-  const health = wrong > 0 ? 100 - (wrong * 100) / length : 100;
+  const { wrong } = useHealthStore();
+  const health = wrong > 0 ? 100 - (wrong * 100) / 8 : 100;
   const { updateState } = useGameStateStore();
   if (health === 0) updateState("lost");
   return (
