@@ -1,12 +1,12 @@
 import {
-  useBeforeUnload,
   useLoaderData,
+  useNavigation,
   type LoaderFunctionArgs,
 } from "react-router";
 import data from "app/DB/data.json";
 import { PlayableLetter } from "~/routes/game/components/playable-letter";
 import { KeyboardLetter } from "~/routes/game/components/keyboard-letter";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useHealthStore } from "./stores/health-store";
 import { useGameStateStore } from "./stores/game-state-store";
 
@@ -38,12 +38,13 @@ const Game = () => {
   )
     updateState("won");
 
-  useBeforeUnload(
-    useCallback(() => {
-      setSelected([]);
-      updateState("playing");
-    }, [])
-  );
+  const navigation = useNavigation();
+
+  if (navigation.state === "loading" && state !== "playing") {
+    updateState("playing");
+  }
+
+  if (navigation.state === "loading" && selected.length > 0) setSelected([]);
   return (
     <div className="flex flex-col gap-28">
       <div className="flex flex-wrap gap-x-3 gap-y-2 md:gap-x-4 md:gap-y-3 xl:gap-y-3 justify-center">
@@ -72,7 +73,9 @@ const Game = () => {
               if (selected.includes(letter)) return;
               setSelected([...selected, letter]);
             }}
-            disabled={selected.includes(letter)}
+            disabled={
+              selected.includes(letter) || navigation.state === "loading"
+            }
           />
         ))}
       </div>
