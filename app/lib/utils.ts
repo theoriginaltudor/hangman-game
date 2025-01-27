@@ -1,11 +1,12 @@
 import { type ClassValue, clsx } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
+import { colors, fontSize } from "../../custom-css";
 
 const customTailwindMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      "font-size": ["text-body", "text-mm", "text-ms", "text-ml", "text-mxl"],
-      "text-color": ["text-darkNavy", "text-playBlue", "text-playSky"],
+      "font-size": [...Object.keys(fontSize!).map((key) => `text-${key}`)],
+      "text-color": [...Object.keys(colors).map((key) => `text-${key}`)],
     },
   },
 });
