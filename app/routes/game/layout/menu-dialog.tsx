@@ -20,21 +20,15 @@ export const MenuDialog = ({ title }: { title: string }) => {
           {...(state === "paused" && { action: () => updateState("playing") })}
           {...(state === "won" && {
             to: Routes.home,
-            action: () => updateState("playing"),
           })}
           {...(state === "lost" && {
             to: Routes.home,
-            action: () => updateState("playing"),
           })}
         >
           Continue
         </BlueButton>
-        <BlueButton to={Routes.category} action={() => updateState("playing")}>
-          New category
-        </BlueButton>
-        <PurpleButton to={Routes.home} action={() => updateState("playing")}>
-          Quit game
-        </PurpleButton>
+        <BlueButton to={Routes.category}>New category</BlueButton>
+        <PurpleButton to={Routes.home}>Quit game</PurpleButton>
       </Card>
     </div>
   );

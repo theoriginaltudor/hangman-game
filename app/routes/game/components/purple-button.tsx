@@ -3,12 +3,10 @@ import { Link } from "react-router";
 export const PurpleButton: React.FC<{
   children: React.ReactNode;
   to: string;
-  action?: () => void;
-}> = ({ children, to: link, action }) => {
+}> = ({ children, to: link }) => {
   return (
     <Link
       to={link}
-      {...(action && { onClick: action })}
       prefetch="intent"
       className="flex justify-center bg-darkNavy relative py-5 px-16 rounded-full hover:brightness-105"
     >
