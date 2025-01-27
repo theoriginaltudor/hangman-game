@@ -1,8 +1,17 @@
 import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { extendTailwindMerge } from "tailwind-merge";
+
+const customTailwindMerge = extendTailwindMerge({
+  extend: {
+    classGroups: {
+      "font-size": ["text-body", "text-mm", "text-ms", "text-ml", "text-mxl"],
+      "text-color": ["text-darkNavy", "text-playBlue", "text-playSky"],
+    },
+  },
+});
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return customTailwindMerge(clsx(inputs));
 }
 
 export const Routes = {
