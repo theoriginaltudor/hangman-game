@@ -11,7 +11,7 @@ export const MenuDialog = () => {
       <Card className="gap-y-14 pb-[3.25rem]">
         <div className="relative w-[16.4375rem] md:w-[23.3125rem] -mt-[5rem] md:-mt-[6.5rem]">
           {"You Louse".split("").map((letter, index) => (
-            <ShadowLetter key={index} letter={letter} />
+            <ShadowLetter key={index} letter={letter} title />
           ))}
         </div>
         <BlueButton to="/instructions">Continue</BlueButton>
