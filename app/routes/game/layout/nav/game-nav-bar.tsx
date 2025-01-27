@@ -7,8 +7,8 @@ import { useGameStateStore } from "../../stores/game-state-store";
 export const GameNavBar = ({ category }: { category: string }) => {
   const { wrong } = useHealthStore();
   const health = wrong > 0 ? 100 - (wrong * 100) / 8 : 100;
-  const { updateState } = useGameStateStore();
-  if (health === 0) updateState("lost");
+  const { updateState, state } = useGameStateStore();
+  if (health === 0 && state !== "lost") updateState("lost");
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-4">

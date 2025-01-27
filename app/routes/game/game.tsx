@@ -18,7 +18,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 const Game = () => {
   const { guess } = useLoaderData<typeof loader>();
   const { updateHealth, wrong } = useHealthStore();
-  const { updateState } = useGameStateStore();
+  const { updateState, state } = useGameStateStore();
   const word = guess.name.toLowerCase();
   const [selected, setSelected] = useState<string[]>([]);
   const wrongGuesses = selected.filter(
@@ -29,7 +29,8 @@ const Game = () => {
     word
       .split("")
       .filter((letter) => letter !== " ")
-      .every((letter) => selected.includes(letter))
+      .every((letter) => selected.includes(letter)) &&
+    state !== "won"
   )
     updateState("won");
   return (
