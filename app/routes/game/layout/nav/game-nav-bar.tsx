@@ -1,14 +1,14 @@
 import HeartIcon from "~/assets/images/icon-heart.svg?react";
 import { HealthBar } from "./health-bar";
 import { MenuButton } from "./menu-button";
+import { useHealthStore } from "../../stores/health-store";
+import { useGameStateStore } from "../../stores/game-state-store";
 
-export const GameNavBar = ({
-  category,
-  health,
-}: {
-  category: string;
-  health: number;
-}) => {
+export const GameNavBar = ({ category }: { category: string }) => {
+  const { length, wrong } = useHealthStore();
+  const health = wrong > 0 ? 100 - (wrong * 100) / length : 100;
+  const { updateState } = useGameStateStore();
+  if (health === 0) updateState("lost");
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-4">

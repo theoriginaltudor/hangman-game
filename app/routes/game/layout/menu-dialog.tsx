@@ -9,7 +9,7 @@ export const MenuDialog = ({ title }: { title: string }) => {
     <div className="h-screen flex fixed left-0 items-center justify-center w-screen">
       <div className="absolute bg-gradient-to-t from-[#2B1677] to-[#1A043A] h-screen opacity-75 w-screen" />
       <Card className="gap-y-14 pb-[3.25rem]">
-        <div className="relative w-[16.4375rem] md:w-[23.3125rem] -mt-[5rem] md:-mt-[6.5rem]">
+        <div className="relative w-[16.4375rem] md:w-[23.3125rem] -mt-[3rem] md:-mt-[4.5rem] flex justify-center">
           {title.split("").map((letter, index) => (
             <ShadowLetter key={index} letter={letter} title />
           ))}

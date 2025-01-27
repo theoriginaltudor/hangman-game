@@ -17,7 +17,7 @@ export const ShadowLetter = ({
         className={cn(
           "font-mouse tracking-wider text-stroke-sm md:text-stroke-lg text-mm md:text-[6.5rem] xl:text-mxl",
           {
-            "text-[6rem] md:text-[8.375rem] xl:text-[8.375rem] tracking-tight":
+            "text-[6rem] leading-none md:text-[8.375rem] xl:text-[8.375rem] tracking-tight":
               title,
           }
         )}
@@ -28,7 +28,7 @@ export const ShadowLetter = ({
         className={cn(
           "bg-gradient-to-t from-[#E3F2FF] to-playSky font-mouse absolute tracking-widest text-transparent bg-clip-text text-mm md:text-[6.5rem] xl:text-mxl",
           {
-            "text-[6rem] md:text-[8.375rem] xl:text-[8.375rem] tracking-tight":
+            "text-[6rem] leading-none md:text-[8.375rem] xl:text-[8.375rem] tracking-tight":
               title,
           }
         )}
