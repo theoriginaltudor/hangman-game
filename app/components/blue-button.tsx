@@ -9,7 +9,7 @@ export const BlueButton: React.FC<{
   if (!link) {
     return (
       <button
-        {...(action && { onMouseDown: action })}
+        {...(action && { onClick: action })}
         className="flex justify-center bg-darkNavy relative py-5 px-16 rounded-full hover:brightness-125"
       >
         <div className="flex justify-center absolute rounded-full bg-blue-500 top-[0.0625rem] bottom-[0.3125rem] left-[0.1875rem] right-[0.1875rem]">
@@ -24,7 +24,7 @@ export const BlueButton: React.FC<{
   return (
     <Link
       to={link}
-      {...(action && { onMouseDown: action })}
+      {...(action && { onClick: action })}
       prefetch="intent"
       className="flex justify-center bg-darkNavy relative py-5 px-16 rounded-full hover:brightness-125"
     >

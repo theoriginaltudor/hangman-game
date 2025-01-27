@@ -8,7 +8,7 @@ export const PurpleButton: React.FC<{
   return (
     <Link
       to={link}
-      {...(action && { onMouseDown: action })}
+      {...(action && { onClick: action })}
       prefetch="intent"
       className="flex justify-center bg-darkNavy relative py-5 px-16 rounded-full hover:brightness-105"
     >
