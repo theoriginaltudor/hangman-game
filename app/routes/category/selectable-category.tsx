@@ -1,20 +1,12 @@
-import { useRef } from "react";
 import { Link } from "react-router";
 import { Routes } from "~/lib/utils";
 
 export const Category = ({
   category,
-  reference,
-  index,
+  ref: itemRef,
 }: {
   category: string;
-  reference?: React.RefObject<HTMLAnchorElement[]>;
-  index?: number;
-}) => {
-  const itemRef = useRef<HTMLAnchorElement | null>(null);
-
-  if (reference && itemRef.current && index)
-    reference.current[index] = itemRef.current;
+} & Pick<React.RefAttributes<HTMLAnchorElement>, "ref">) => {
   return (
     <Link
       to={`${Routes.ingame}/${category}`}
