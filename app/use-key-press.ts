@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 
-export const useKeyPress = (events: Record<string, VoidFunction>[]) => {
+export const useKeyPress = (
+  events: Record<string, VoidFunction>[],
+  dependecies?: React.DependencyList
+) => {
   const keyPressHandler = (e: KeyboardEvent) => {
     events.forEach((event) => {
       Object.keys(event).forEach((key) => {
@@ -15,5 +18,5 @@ export const useKeyPress = (events: Record<string, VoidFunction>[]) => {
     return () => {
       document.removeEventListener("keydown", keyPressHandler);
     };
-  }, []);
+  }, dependecies ?? []);
 };
