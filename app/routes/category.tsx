@@ -2,16 +2,19 @@ import data from "app/DB/data.json";
 import { useLoaderData } from "react-router";
 import { Category } from "./category/selectable-category";
 import { useEffect, useRef, useState } from "react";
+import { useKeyPress } from "~/use-key-press";
 
 export async function loader() {
   const categories = Object.keys(data.categories);
   return { categories };
 }
 
+type RefType = HTMLAnchorElement | null;
+
 const ChooseCategory = () => {
   const { categories } = useLoaderData<typeof loader>();
   const [columns, setColumns] = useState(1);
-  const itemRefs = useRef<HTMLAnchorElement[]>([]);
+  const itemRefs = useRef<RefType[]>([]);
 
   // Function to update the number of columns based on screen width
   const updateColumns = () => {
@@ -33,47 +36,46 @@ const ChooseCategory = () => {
     return () => window.removeEventListener("resize", updateColumns);
   }, []);
 
-  // Effect to handle arrow key navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      console.log("key pressed");
-      const focusedIndex = itemRefs.current?.findIndex(
-        (ref) => ref === document.activeElement
-      );
+  const arrowHandler = (step: number) => {
+    let focusedIndex = itemRefs.current.findIndex(
+      (ref) => ref === document.activeElement
+    );
 
-      if (!focusedIndex || focusedIndex === -1) {
-        itemRefs.current?.[0].focus();
-        return;
-      }
+    if (focusedIndex === -1) {
+      itemRefs.current[0]?.focus();
+      return;
+    }
 
-      let nextIndex;
+    if (focusedIndex >= 0 && focusedIndex < categories.length) {
+      itemRefs.current[focusedIndex + step]?.focus();
+    }
+  };
 
-      switch (e.key) {
-        case "ArrowRight":
-          nextIndex = focusedIndex + 1;
-          break;
-        case "ArrowLeft":
-          nextIndex = focusedIndex - 1;
-          break;
-        case "ArrowDown":
-          nextIndex = focusedIndex + columns;
-          break;
-        case "ArrowUp":
-          nextIndex = focusedIndex - columns;
-          break;
-        default:
-          return;
-      }
-
-      console.log("nextIndex", nextIndex);
-      if (nextIndex >= 0 && nextIndex < categories.length) {
-        itemRefs.current?.[nextIndex].focus();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [columns, categories.length]);
+  useKeyPress(
+    [
+      {
+        ArrowUp: () => {
+          arrowHandler(-columns);
+        },
+      },
+      {
+        ArrowDown: () => {
+          arrowHandler(columns);
+        },
+      },
+      {
+        ArrowLeft: () => {
+          arrowHandler(-1);
+        },
+      },
+      {
+        ArrowRight: () => {
+          arrowHandler(1);
+        },
+      },
+    ],
+    [itemRefs, columns]
+  );
 
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 xl:grid-cols-3 xl:gap-x-12 xl: gap-y-8">
