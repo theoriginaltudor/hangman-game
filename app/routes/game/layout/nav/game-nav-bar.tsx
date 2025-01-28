@@ -3,14 +3,23 @@ import { HealthBar } from "./health-bar";
 import { MenuButton } from "./menu-button";
 import { useHealthStore } from "../../stores/health-store";
 import { useGameStateStore } from "../../stores/game-state-store";
+import { useKeyPress } from "~/use-key-press";
 
 export const GameNavBar = ({ category }: { category: string }) => {
   const { wrong } = useHealthStore();
   const health = wrong > 0 ? 100 - (wrong * 100) / 8 : 100;
   const { updateState, state } = useGameStateStore();
   if (health === 0 && state !== "lost") updateState("lost");
+
+  useKeyPress([
+    {
+      Escape: () => {
+        if (state === "playing") updateState("paused");
+      },
+    },
+  ]);
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex items-center justify-between">
       <div className="flex items-center gap-4">
         <MenuButton />
         <h2 className="font-mouse text-[2.5rem] text-white tracking-wider">
