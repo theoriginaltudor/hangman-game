@@ -8,7 +8,7 @@ import { useGameStateStore } from "../stores/game-state-store";
 export const MenuDialog = ({ title }: { title: string }) => {
   const { state, updateState } = useGameStateStore();
   return (
-    <div className="h-screen flex fixed left-0 items-center justify-center w-screen">
+    <div className="fixed left-0 flex items-center justify-center w-screen h-screen">
       <div className="absolute bg-gradient-to-t from-[#2B1677] to-[#1A043A] h-screen opacity-75 w-screen" />
       <Card className="gap-y-14 pb-[3.25rem]">
         <div className="relative w-[16.4375rem] md:w-[23.3125rem] -mt-[3rem] md:-mt-[4.5rem] flex justify-center">
@@ -19,10 +19,10 @@ export const MenuDialog = ({ title }: { title: string }) => {
         <BlueButton
           {...(state === "paused" && { action: () => updateState("playing") })}
           {...(state === "won" && {
-            to: Routes.home,
+            to: "#",
           })}
           {...(state === "lost" && {
-            to: Routes.home,
+            to: "#",
           })}
         >
           Continue
