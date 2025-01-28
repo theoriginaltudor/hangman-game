@@ -41,7 +41,10 @@ const ChooseCategory = () => {
         (ref) => ref === document.activeElement
       );
 
-      if (!focusedIndex || focusedIndex === -1) return;
+      if (!focusedIndex || focusedIndex === -1) {
+        itemRefs.current?.[0].focus();
+        return;
+      }
 
       let nextIndex;
 
