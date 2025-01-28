@@ -10,7 +10,9 @@ type CategoryKeys = keyof typeof data.categories;
 export async function loader({ params }: LoaderFunctionArgs) {
   const category = params.category as CategoryKeys;
   const list = data.categories[category];
-  const guess = list[Math.floor(Math.random() * list.length)];
+  const guess = list.filter((item) => !item.selected)[
+    Math.floor(Math.random() * list.length)
+  ];
   return { guess };
 }
 
