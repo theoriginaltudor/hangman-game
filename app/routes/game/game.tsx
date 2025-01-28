@@ -1,8 +1,4 @@
-import {
-  useLoaderData,
-  useNavigation,
-  type LoaderFunctionArgs,
-} from "react-router";
+import { type LoaderFunctionArgs } from "react-router";
 import data from "app/DB/data.json";
 import { PlayableLetter } from "~/routes/game/components/playable-letter";
 import { KeyboardLetter } from "~/routes/game/components/keyboard-letter";
