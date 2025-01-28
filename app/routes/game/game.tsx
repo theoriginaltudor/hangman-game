@@ -15,14 +15,14 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 const Game = () => {
-  const { selected, setSelected, word, navigation } = useGameLogic();
+  const { selected, setSelected, word, navigation, state } = useGameLogic();
   const keypressList = "abcdefghijklmnopqrstuvwxyz".split("").map((letter) => ({
     [letter]: () => {
-      if (selected.includes(letter)) return;
+      if (selected.includes(letter) || state !== "playing") return;
       setSelected([...selected, letter]);
     },
   }));
-  useKeyPress(keypressList, [selected]);
+  useKeyPress(keypressList, [selected, state]);
 
   return (
     <div className="flex flex-col gap-28">

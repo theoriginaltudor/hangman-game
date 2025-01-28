@@ -31,5 +31,5 @@ export const useGameLogic = () => {
 
   if (navigation.state === "loading" && selected.length > 0) setSelected([]);
 
-  return { selected, setSelected, word, navigation };
+  return { selected, setSelected, word, navigation, state };
 };
