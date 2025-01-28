@@ -7,6 +7,7 @@ import {
 import { Routes, type RouteValues } from "~/lib/utils";
 import { NavBar } from "./nav-bar";
 import { useEffect } from "react";
+import { useKeyPress } from "~/use-key-press";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
@@ -26,18 +27,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
 const NavLayout = () => {
   const { pageHeading } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
-  const keyPressHandler = (e: KeyboardEvent) => {
-    if (e.key === "Escape" || e.key === "Backspace") {
-      navigate(-1);
-    }
-  };
-  useEffect(() => {
-    document.addEventListener("keydown", keyPressHandler);
+  useKeyPress([
+    { Escape: () => navigate(-1) },
+    { Backspace: () => navigate(-1) },
+  ]);
 
-    return () => {
-      document.removeEventListener("keydown", keyPressHandler);
-    };
-  }, []);
   return (
     <div className="h-screen flex flex-col gap-20 px-6 py-8 md:px-10 md:py-16 xl:px-28 xl:py-20">
       <NavBar pageHeading={pageHeading} />
