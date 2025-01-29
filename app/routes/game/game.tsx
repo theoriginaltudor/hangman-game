@@ -6,6 +6,7 @@ import { useGameLogic } from "./use-game-logic";
 import { useKeyPress } from "~/use-key-press";
 import fs from "fs/promises";
 import path from "path";
+import { ShadowLetter } from "~/components/shadow-letter";
 
 type CategoryKeys = keyof typeof data.categories;
 
@@ -47,7 +48,11 @@ const Game = () => {
   const words = word?.split(" ");
   if (error)
     return (
-      <div className="flex justify-center items-center text-3xl">{error}</div>
+      <div className="flex justify-center items-center">
+        {Array.from(error).map((letter, index) => (
+          <ShadowLetter letter={letter} key={index} />
+        ))}
+      </div>
     );
   if (words && selected && setSelected)
     return (
