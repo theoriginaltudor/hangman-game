@@ -6,6 +6,7 @@ import type { loader } from "./game";
 
 export const useGameLogic = () => {
   const { guess } = useLoaderData<typeof loader>();
+  if (guess === undefined) return { error: "Category exhausted" };
   const { updateHealth, wrong } = useHealthStore();
   const { updateState, state } = useGameStateStore();
   const word = guess.name.toLowerCase();
