@@ -33,7 +33,7 @@ export const BlueButton: React.FC<Props> = ({
     <Link
       to={link}
       ref={ref as React.RefObject<HTMLAnchorElement>}
-      prefetch="intent"
+      prefetch="render"
       className="relative flex justify-center px-16 py-5 rounded-full bg-darkNavy hover:brightness-125"
     >
       <div className="flex justify-center absolute rounded-full bg-blue-500 top-[0.0625rem] bottom-[0.3125rem] left-[0.1875rem] right-[0.1875rem]">
