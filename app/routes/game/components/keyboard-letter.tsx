@@ -1,3 +1,5 @@
+import { cn } from "~/lib/utils";
+
 export const KeyboardLetter = ({
   letter,
   disabled,
@@ -10,9 +12,13 @@ export const KeyboardLetter = ({
   return (
     <button
       onMouseDown={action}
-      className={`${
-        disabled ? "brightness-50 " : "hover:bg-playBlue hover:text-white "
-      }flex justify-center  text-darkNavy  bg-white rounded-lg md:rounded-[1.875rem] py-[1.1875rem] md:py-[1.5625rem] px-2.5 md:px-8`}
+      className={cn(
+        "flex justify-center  text-darkNavy  bg-white rounded-lg md:rounded-[1.875rem] py-[1.1875rem] md:py-[1.5625rem] px-2.5 md:px-8",
+        {
+          "brightness-50": disabled,
+          "hover:bg-playBlue hover:text-white": !disabled,
+        }
+      )}
     >
       <h2 className="uppercase font-mouse text-2xl md:text-mm leading-none">
         {letter}

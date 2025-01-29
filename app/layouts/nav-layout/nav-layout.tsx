@@ -33,7 +33,7 @@ const NavLayout = () => {
   ]);
 
   return (
-    <div className="h-screen flex flex-col gap-20 px-6 py-8 md:px-10 md:py-16 xl:px-28 xl:py-20">
+    <div className="h-screen flex flex-col gap-20 px-6 py-8 md:px-10 md:py-16 xl:px-0 xl:py-20 xl:max-w-[76rem] xl:mx-auto">
       <NavBar pageHeading={pageHeading} />
       <Outlet />
     </div>
