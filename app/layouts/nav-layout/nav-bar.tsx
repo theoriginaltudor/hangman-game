@@ -11,6 +11,7 @@ export const NavBar = ({ pageHeading }: { pageHeading: string }) => {
             <ShadowLetter letter={letter} key={index} />
           ))}
       </div>
+      <div className="hidden md:block w-24" />
     </div>
   );
 };
