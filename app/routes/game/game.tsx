@@ -26,24 +26,21 @@ const Game = () => {
   }));
   useKeyPress(keypressList, [selected, state]);
 
+  const words = word.split(" ");
   return (
     <div className="flex flex-col gap-28">
-      <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 md:gap-x-4 md:gap-y-3 xl:gap-y-3">
-        {word.split("").map((letter, index) => {
-          if (letter === " ")
-            return (
-              <div className="opacity-0" key={index}>
-                <PlayableLetter letter={letter} />
-              </div>
-            );
-          return (
-            <PlayableLetter
-              key={index}
-              letter={letter}
-              disabled={!selected.includes(letter)}
-            />
-          );
-        })}
+      <div className="flex flex-wrap justify-center gap-y-2 md:gap-y-3 xl:gap-y-3 gap-x-10 md:gap-x-[5.4375rem] xl:gap-x-[7rem]">
+        {words.map((word, index) => (
+          <div key={index} className="flex gap-x-3 md:gap-x-4">
+            {word.split("").map((letter, index) => (
+              <PlayableLetter
+                key={index}
+                letter={letter}
+                disabled={!selected.includes(letter)}
+              />
+            ))}
+          </div>
+        ))}
       </div>
       <div className="flex flex-wrap gap-x-2 gap-y-6">
         {"abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
