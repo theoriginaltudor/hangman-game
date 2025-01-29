@@ -8,7 +8,7 @@ export const PlayableLetter = ({
   disabled?: boolean;
 }) => {
   return (
-    <button
+    <div
       className={cn(
         "flex justify-center bg-darkNavy relative rounded-xl md:rounded-3xl xl:rounded-[2.5rem] pt-[1.1875rem] md:pt-[2.125rem] pb-[1.0625rem] md:pb-[1.875rem] w-10 md:w-[5.4375rem] xl:w-[7rem]",
         {
@@ -29,6 +29,6 @@ export const PlayableLetter = ({
       >
         {letter}
       </h2>
-    </button>
+    </div>
   );
 };
