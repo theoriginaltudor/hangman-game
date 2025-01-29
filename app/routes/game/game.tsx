@@ -4,8 +4,6 @@ import { PlayableLetter } from "~/routes/game/components/playable-letter";
 import { KeyboardLetter } from "~/routes/game/components/keyboard-letter";
 import { useGameLogic } from "./use-game-logic";
 import { useKeyPress } from "~/use-key-press";
-import fs from "fs/promises";
-import path from "path";
 import { ShadowLetter } from "~/components/shadow-letter";
 
 type CategoryKeys = keyof typeof data.categories;
@@ -18,19 +16,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const guess: { name: string; selected: boolean } | undefined =
     filteredList[index];
   if (guess === undefined) return { guess };
-  const updatedList = list.filter((item) => item.name !== guess.name);
-  const updatedData = {
-    categories: {
-      ...data.categories,
-      [category]: [...updatedList, { ...guess, selected: true }],
-    },
-  };
-  const filePath = path.join(process.cwd(), "app/DB/data.json");
-  try {
-    await fs.writeFile(filePath, JSON.stringify(updatedData, null, 2));
-  } catch (error) {
-    console.error("Error writing file", error);
-  }
   return { guess };
 }
 

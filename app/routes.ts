@@ -15,4 +15,5 @@ export default [
   layout("routes/game/layout/game-layout.tsx", [
     route(`${Routes.ingame}/:category`, "routes/game/game.tsx"),
   ]),
+  route("/mark-selected", "routes/mark-selected.ts"),
 ] satisfies RouteConfig;

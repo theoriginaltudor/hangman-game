@@ -1,4 +1,9 @@
-import { useLoaderData, useNavigation } from "react-router";
+import {
+  useFetcher,
+  useLoaderData,
+  useNavigation,
+  useParams,
+} from "react-router";
 import { useHealthStore } from "./stores/health-store";
 import { useGameStateStore } from "./stores/game-state-store";
 import { useState } from "react";
@@ -30,7 +35,18 @@ export const useGameLogic = () => {
     updateState("playing");
   }
 
-  if (navigation.state === "loading" && selected.length > 0) setSelected([]);
+  const fetcher = useFetcher();
+  const { category } = useParams();
+
+  if (navigation.state === "loading" && selected.length > 0) {
+    setSelected([]);
+    if (state === "won" || state === "lost") {
+      const formData = new FormData();
+      formData.append("choice", guess.name);
+      formData.append("category", category ?? "");
+      fetcher.submit(formData, { method: "POST", action: "/mark-selected" });
+    }
+  }
 
   return { selected, setSelected, word, navigation, state };
 };
