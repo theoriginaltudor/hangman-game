@@ -8,7 +8,7 @@ import { getDB, type CategoryKeys, type Data } from "~/DB/db.server";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const category = params.category as CategoryKeys;
-  const data: Data = await getDB();
+  const data = await getDB();
   const list = data.categories[category];
   const filteredList = list.filter((item) => !item.selected);
   const index = Math.floor(Math.random() * filteredList.length);

@@ -34,10 +34,6 @@
         "selected": false
       },
       {
-        "name": "Frozen",
-        "selected": false
-      },
-      {
         "name": "The Matrix",
         "selected": false
       },
@@ -66,15 +62,7 @@
         "selected": false
       },
       {
-        "name": "Back to the Future",
-        "selected": false
-      },
-      {
         "name": "Blade Runner",
-        "selected": false
-      },
-      {
-        "name": "Star Wars",
         "selected": false
       },
       {
@@ -98,10 +86,6 @@
         "selected": false
       },
       {
-        "name": "Raiders of the Lost Ark",
-        "selected": false
-      },
-      {
         "name": "La La Land",
         "selected": false
       },
@@ -119,6 +103,22 @@
       },
       {
         "name": "Schindler's List",
+        "selected": false
+      },
+      {
+        "name": "Back to the Future",
+        "selected": false
+      },
+      {
+        "name": "Frozen",
+        "selected": false
+      },
+      {
+        "name": "Star Wars",
+        "selected": false
+      },
+      {
+        "name": "Raiders of the Lost Ark",
         "selected": false
       }
     ],
@@ -254,10 +254,6 @@
         "selected": false
       },
       {
-        "name": "Canada",
-        "selected": false
-      },
-      {
         "name": "Denmark",
         "selected": false
       },
@@ -338,10 +334,6 @@
         "selected": false
       },
       {
-        "name": "United States",
-        "selected": false
-      },
-      {
         "name": "China",
         "selected": false
       },
@@ -359,6 +351,14 @@
       },
       {
         "name": "Belgium",
+        "selected": false
+      },
+      {
+        "name": "Canada",
+        "selected": false
+      },
+      {
+        "name": "United States",
         "selected": false
       },
       {

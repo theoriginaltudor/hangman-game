@@ -9,7 +9,7 @@ export const dbPath = path.resolve(process.cwd(), "app/DB/data.json");
 
 export const getDB = async () => {
   const data = await fs.readFile(dbPath, "utf-8");
-  return JSON.parse(data);
+  return JSON.parse(data) as Data;
 };
 
 export const saveDB = async (data: Data) => {
@@ -17,6 +17,15 @@ export const saveDB = async (data: Data) => {
 };
 
 export const reset = async () => {
-  const data = await fs.readFile(dbPath, "utf-8");
-  await fs.writeFile(dbPath, data.replaceAll(": true", ": false"));
+  const data = await getDB();
+  const updatedData = {
+    categories: Object.fromEntries(
+      Object.entries(data.categories).map(([key, value]) => [
+        key,
+        value.map((item) => ({ ...item, selected: false })),
+      ])
+    ),
+  } as Data;
+
+  await saveDB(updatedData);
 };
