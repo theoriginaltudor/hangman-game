@@ -4,5 +4,5 @@ import { Routes } from "~/lib/utils";
 
 export async function loader() {
   reset();
-  redirect(Routes.home);
+  return redirect(Routes.home);
 }
