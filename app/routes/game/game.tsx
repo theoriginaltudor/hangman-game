@@ -1,15 +1,14 @@
 import { type LoaderFunctionArgs } from "react-router";
-import data from "app/DB/data.json";
 import { PlayableLetter } from "~/routes/game/components/playable-letter";
 import { KeyboardLetter } from "~/routes/game/components/keyboard-letter";
 import { useGameLogic } from "./use-game-logic";
 import { useKeyPress } from "~/use-key-press";
 import { ShadowLetter } from "~/components/shadow-letter";
-
-type CategoryKeys = keyof typeof data.categories;
+import { getDB, type CategoryKeys, type Data } from "~/DB/db.server";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const category = params.category as CategoryKeys;
+  const data: Data = await getDB();
   const list = data.categories[category];
   const filteredList = list.filter((item) => !item.selected);
   const index = Math.floor(Math.random() * filteredList.length);

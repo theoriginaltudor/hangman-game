@@ -6,6 +6,7 @@ import { ShadowLetter } from "~/components/shadow-letter";
 import { useGameStateStore } from "../stores/game-state-store";
 import { useKeyPress } from "~/use-key-press";
 import { useRef } from "react";
+import { useLocation } from "react-router";
 
 type RefType = HTMLAnchorElement | HTMLButtonElement | null;
 
@@ -46,6 +47,7 @@ export const MenuDialog = ({ title }: { title: string }) => {
     ],
     [buttons]
   );
+  const location = useLocation();
   return (
     <div className="fixed left-0 flex items-center justify-center w-screen h-screen">
       <div className="absolute bg-gradient-to-t from-[#2B1677] to-[#1A043A] h-screen opacity-75 w-screen" />
@@ -58,10 +60,10 @@ export const MenuDialog = ({ title }: { title: string }) => {
         <BlueButton
           {...(state === "paused" && { action: () => updateState("playing") })}
           {...(state === "won" && {
-            to: "#",
+            to: location.pathname,
           })}
           {...(state === "lost" && {
-            to: "#",
+            to: location.pathname,
           })}
           ref={(el) => {
             if (el) buttons.current[0] = el;
@@ -78,7 +80,7 @@ export const MenuDialog = ({ title }: { title: string }) => {
           New category
         </BlueButton>
         <PurpleButton
-          to={Routes.home}
+          to={Routes.reset}
           ref={(el) => {
             if (el) buttons.current[2] = el;
           }}

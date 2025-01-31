@@ -20,6 +20,7 @@ export const Routes = {
   instructions: "/instructions",
   category: "/category",
   ingame: "/ingame",
+  reset: "/reset",
 } as const;
 
 export type RouteValues = (typeof Routes)[keyof typeof Routes];

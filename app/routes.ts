@@ -16,4 +16,5 @@ export default [
     route(`${Routes.ingame}/:category`, "routes/game/game.tsx"),
   ]),
   route("/mark-selected", "routes/mark-selected.ts"),
+  route("/reset", "routes/reset.ts"),
 ] satisfies RouteConfig;
