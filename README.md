@@ -1,100 +1,45 @@
-# Welcome to React Router!
+# Frontend Mentor - Hangman game solution
 
-A modern, production-ready template for building full-stack React applications using React Router.
+This is a solution to the [Hangman game challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/hangman-game-rsQiSVLGWn). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Table of contents
 
-## Features
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+  - [Built with](#built-with)
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Overview
 
-## Getting Started
+### The challenge
 
-### Installation
+Users should be able to:
 
-Install the dependencies:
+- Learn how to play Hangman from the main menu.
+- Start a game and choose a category.
+- Play Hangman with a random word selected from that category.
+- See their current health decrease based on incorrect letter guesses.
+- Win the game if they complete the whole word.
+- Lose the game if they make eight wrong guesses.
+- Pause the game and choose to continue, pick a new category, or quit.
+- View the optimal layout for the interface depending on their device's screen size.
+- See hover and focus states for all interactive elements on the page.
+- Navigate the entire game only using their keyboard.
 
-```bash
-npm install
-```
+### Screenshot
 
-### Development
+![](./screenshot.png)
 
-Start the development server with HMR:
+### Links
 
-```bash
-npm run dev
-```
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: (https://hang-maan.netlify.app/)
 
-Your application will be available at `http://localhost:5173`.
+### Built with
 
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-This template includes three Dockerfiles optimized for different package managers:
-
-- `Dockerfile` - for npm
-- `Dockerfile.pnpm` - for pnpm
-- `Dockerfile.bun` - for bun
-
-To build and run using Docker:
-
-```bash
-# For npm
-docker build -t my-app .
-
-# For pnpm
-docker build -f Dockerfile.pnpm -t my-app .
-
-# For bun
-docker build -f Dockerfile.bun -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+- Semantic HTML5 markup
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [ReactRouterv7](https://reactrouter.com/home) - React framework
+- [Tailwindcss](https://tailwindcss.com/) - For styles
