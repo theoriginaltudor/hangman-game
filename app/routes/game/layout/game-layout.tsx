@@ -13,7 +13,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const guess: { name: string; selected: boolean } | undefined =
     filteredList[index];
   if (guess === undefined) return { guess };
-  console.log("guess", guess);
   return { guess };
 }
 

@@ -9,7 +9,7 @@ type Module = typeof import("../game-layout.js")
 
 export type Info = {
   parents: [Parent0],
-  id: "routes/game/layout/game-layout"
+  id: "game-layout"
   file: "routes/game/layout/game-layout.tsx"
   path: "undefined"
   params: {} & { [key: string]: string | undefined }

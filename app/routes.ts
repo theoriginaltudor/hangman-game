@@ -12,7 +12,7 @@ export default [
     route(Routes.category, "routes/category/category.tsx"),
     route(Routes.instructions, "routes/instructions/instructions.tsx"),
   ]),
-  layout("routes/game/layout/game-layout.tsx", [
+  layout("routes/game/layout/game-layout.tsx", { id: "game-layout" }, [
     route(`${Routes.ingame}/:category`, "routes/game/game.tsx"),
   ]),
   route("/mark-selected", "routes/mark-selected.ts"),
