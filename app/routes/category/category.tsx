@@ -1,10 +1,11 @@
-import data from "app/DB/data.json";
 import { useLoaderData } from "react-router";
 import { Category } from "./selectable-category";
 import { useEffect, useRef, useState } from "react";
 import { useKeyPress } from "~/use-key-press";
+import { getDB, type Data } from "~/DB/db.server";
 
 export async function loader() {
+  const data: Data = await getDB();
   const categories = Object.keys(data.categories);
   return { categories };
 }

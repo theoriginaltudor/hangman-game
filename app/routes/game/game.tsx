@@ -4,7 +4,7 @@ import { KeyboardLetter } from "~/routes/game/components/keyboard-letter";
 import { useGameLogic } from "./use-game-logic";
 import { useKeyPress } from "~/use-key-press";
 import { ShadowLetter } from "~/components/shadow-letter";
-import { getDB, type CategoryKeys, type Data } from "~/DB/db.server";
+import { getDB, type CategoryKeys } from "~/DB/db.server";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const category = params.category as CategoryKeys;
