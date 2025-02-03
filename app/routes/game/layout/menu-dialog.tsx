@@ -6,7 +6,14 @@ import { ShadowLetter } from "~/components/shadow-letter";
 import { useGameStateStore } from "../stores/game-state-store";
 import { useKeyPress } from "~/use-key-press";
 import { useRef } from "react";
-import { useLocation } from "react-router";
+import {
+  useFetcher,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router";
+import type { loader } from "./game-layout";
 
 type RefType = HTMLAnchorElement | HTMLButtonElement | null;
 
@@ -48,6 +55,18 @@ export const MenuDialog = ({ title }: { title: string }) => {
     [buttons]
   );
   const location = useLocation();
+  const navigate = useNavigate();
+  const { guess } = useLoaderData<typeof loader>();
+  const fetcher = useFetcher();
+  const { category } = useParams();
+  const handleRefresh = () => {
+    const formData = new FormData();
+    formData.append("choice", guess.name);
+    formData.append("category", category ?? "");
+    fetcher.submit(formData, { method: "POST", action: "/mark-selected" });
+    updateState("playing");
+    navigate(location.pathname);
+  };
   return (
     <div className="fixed left-0 flex items-center justify-center w-screen h-screen">
       <div className="absolute bg-gradient-to-t from-[#2B1677] to-[#1A043A] h-screen opacity-75 w-screen" />
@@ -60,10 +79,10 @@ export const MenuDialog = ({ title }: { title: string }) => {
         <BlueButton
           {...(state === "paused" && { action: () => updateState("playing") })}
           {...(state === "won" && {
-            to: location.pathname,
+            action: handleRefresh,
           })}
           {...(state === "lost" && {
-            to: location.pathname,
+            action: handleRefresh,
           })}
           ref={(el) => {
             if (el) buttons.current[0] = el;

@@ -1,22 +1,8 @@
-import { type LoaderFunctionArgs } from "react-router";
 import { PlayableLetter } from "~/routes/game/components/playable-letter";
 import { KeyboardLetter } from "~/routes/game/components/keyboard-letter";
 import { useGameLogic } from "./use-game-logic";
 import { useKeyPress } from "~/use-key-press";
 import { ShadowLetter } from "~/components/shadow-letter";
-import { getDB, type CategoryKeys } from "~/DB/db.server";
-
-export async function loader({ params }: LoaderFunctionArgs) {
-  const category = params.category as CategoryKeys;
-  const data = await getDB();
-  const list = data.categories[category];
-  const filteredList = list.filter((item) => !item.selected);
-  const index = Math.floor(Math.random() * filteredList.length);
-  const guess: { name: string; selected: boolean } | undefined =
-    filteredList[index];
-  if (guess === undefined) return { guess };
-  return { guess };
-}
 
 const Game = () => {
   const { selected, setSelected, word, navigation, state, error } =
